@@ -6,7 +6,7 @@ export class CharacterCarrier {
 
 	constructor(value: string, rotate: boolean=false) {
 		let upperCase = value.toUpperCase();
-		if (!CHECKSTRING.includes(upperCase)) {
+		if (value.length !== 1 || !CHECKSTRING.includes(upperCase)) {
 			throw `Value "${value} is not a character that could be typed in enigma`;
 		}
 		this.value = upperCase;
