@@ -1,5 +1,5 @@
 export class AutoBind {
-	constructor(names) {
+	constructor(names:string[]) {
 		names.forEach(n => console.log(n));
 	}
 }

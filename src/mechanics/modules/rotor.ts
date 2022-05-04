@@ -1,6 +1,6 @@
 // represents a rotor
 import { CharacterCarrier } from "./interfaces";
-import { AutoBind } from "../../helper";
+import { AutoBind } from "HELPER";
 
 interface RotorConfiguration {
 	sequence: string;
