@@ -1,4 +1,6 @@
 // represents a rotor
+import { CharacterCarrier } from "./interfaces";
+import { AutoBind } from "../../helper";
 
 interface RotorConfiguration {
 	sequence: string;
@@ -16,28 +18,46 @@ const RotorTypes = {
 	V: { sequence: "VZBRGITYUPSDNHLXAWMJQOFECK", turnover: "Z" },
 };
 
-export class Rotor {
+export class Rotor extends AutoBind {
 	readonly rotorNumber: RotorNumber;
 	readonly rotor: RotorConfiguration;
-	readonly start: number
-	readonly base: string = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-	current: number
+	readonly start: number;
+	readonly base: string = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+	current: number;
 
 	constructor(rotor: RotorNumber, start: number) {
+		super(["forward", "reverse", "rotate"]);
 		this.rotorNumber = rotor;
 		this.rotor = RotorTypes[rotor];
 		this.start = start;
 		this.current = start;
 	}
 
-	get outstring(): string { 
+	get outstring(): string {
 		let i: number = this.current - 1;
-		return `${this.rotor.sequence.slice(i)}${this.rotor.sequence.slice(0,i)}`;
+		return `${this.rotor.sequence.slice(i)}${this.rotor.sequence.slice(0, i)}`;
 	}
 
-	forward () {}
+	forward(char: CharacterCarrier) :CharacterCarrier {
+		if (char.rotate) {
+			this.rotate();
+		}
+		let index: number = this.base.indexOf(char.value);
+		let rotate: boolean = (this.outstring[0] === this.rotor.turnover);
+		let result: CharacterCarrier = new CharacterCarrier(this.outstring[index], rotate);
+		return result;
+	}
 
-	reverse() {}
+	reverse(char:CharacterCarrier) :CharacterCarrier {
+		let index: number = this.outstring.indexOf(char.value);
+		let result:CharacterCarrier = new CharacterCarrier(this.base[index]);
+		return result;
+	}
 
-	rotate() {}
+	rotate() {
+		this.current += 1;
+		if (this.current > this.rotor.sequence.length) {
+			this.current = 1;
+		}
+	}
 }
