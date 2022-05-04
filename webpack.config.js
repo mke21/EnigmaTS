@@ -25,7 +25,7 @@ module.exports = {
 	plugins: [
 		new HtmlWebpackPlugin({
 			hash: true,
-			title: "jWindows",
+			title: "EnigmaTs",
 			template: "./src/index.html",
 		}),
 	],
