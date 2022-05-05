@@ -27,7 +27,8 @@ module.exports = {
 	resolve: {
 		extensions: [".tsx", ".ts", ".js"],
 		alias: {
-			HELPER: path.resolve(__dirname, "src/helper.js")
+			HELPER: path.resolve(__dirname, "src/helper.js"),
+			MECHANICS: path.resolve(__dirname, "src/mechanics")
 		},
 	},
 	plugins: [

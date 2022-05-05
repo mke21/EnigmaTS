@@ -8,7 +8,10 @@
     "jsx": "react",
     "allowJs": true,
     "moduleResolution": "node",
-		"baseUrl": "./",
-		"paths": {"HELPER": ["src/helper.ts"]}
+    "baseUrl": "./",
+    "paths": {
+      "HELPER": ["src/helper.ts"],
+      "MECHANICS": ["src/mechanics/"]
+    }
   }
 }
