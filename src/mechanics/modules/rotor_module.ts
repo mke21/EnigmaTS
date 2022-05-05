@@ -6,9 +6,9 @@ export class RotorModule extends AutoBind {
   readonly rotors: Rotor[] = [new Rotor(), new Rotor(), new Rotor()];
 
   constructor(
-    firstRotor: RotorNumber,
-    secondRotor: RotorNumber,
-    thirdRotor: RotorNumber
+    firstRotor: RotorNumber="I",
+    secondRotor: RotorNumber="II",
+    thirdRotor: RotorNumber="III"
   ) {
     super(["forward", "reverse", "reset", "setRotor"]);
     this.setRotor(0, firstRotor);
@@ -18,11 +18,17 @@ export class RotorModule extends AutoBind {
 
   forward(char: CharacterCarrier): CharacterCarrier {
     let result = new CharacterCarrier(char.value, char.rotate);
+    for (let i=0; i< this.rotors.length; i++) {
+      result = this.rotors[i].forward(result);
+    };
     return result;
   }
 
   reverse(char: CharacterCarrier) {
     let result = new CharacterCarrier(char.value, char.rotate);
+    for (let i=this.rotors.length -1; i>=0; i--) {
+      result = this.rotors[i].reverse(result);
+    }
     return result;
   }
 
