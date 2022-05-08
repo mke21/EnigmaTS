@@ -2,11 +2,10 @@
  * Baseclass that provides the events create functions
  * events is an array of strings
  */
-import { Event } from "./event";
-import { Controller } from "./controller";
+import { Event, Controller } from "./event";
 
 
-export default class {
+export class EventsBase {
   _controllers: Controller[] = [];
   _events: { [key: string]: Event } = {}; 
 

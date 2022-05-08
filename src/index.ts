@@ -1,3 +1,4 @@
- import {Machine} from  "mechanics/machine";
+import { Machine } from "mechanics/machine";
+import { EventsBase } from "ev/EventsBaseClass";
 
-export { Machine }
+export { Machine, EventsBase };

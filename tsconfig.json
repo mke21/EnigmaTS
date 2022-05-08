@@ -11,7 +11,8 @@
     "baseUrl": "src",
     "paths": {
       "helper": ["helper/*"],
-      "mechanics": ["mechanics/*"]
+      "mechanics/*": ["mechanics/*"],
+      "ev/*": ["events/*"]
     }
   }
 }

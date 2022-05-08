@@ -29,6 +29,7 @@ module.exports = {
 		alias: {
 			helper: path.resolve(__dirname, "src/helper"),
 			mechanics: path.resolve(__dirname, "src/mechanics"),
+			ev: path.resolve(__dirname, "src/events"),
 		},
 	},
 	plugins: [

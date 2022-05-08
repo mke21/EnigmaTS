@@ -1,5 +1,6 @@
 // event class in order to other functions listening in.
 //
+
 export class Event {
   listeners: Function[] = [];
   sender: Object 
@@ -23,3 +24,25 @@ export class Event {
 	}
 }
 
+
+export class Controller {
+  eventObj: Event;
+  listener: Function;
+
+  constructor(eventObj: Event, listener: Function) {
+    this.eventObj = eventObj;
+    this.listener = listener;
+    this.reaction = this.reaction.bind(this);
+    this.enable();
+    return this;
+  }
+
+  enable() {
+    this.eventObj.attach(this.reaction);
+    return this;
+  }
+
+  reaction(args: any) {
+    this.listener(args);
+  }
+}
