@@ -1,16 +1,16 @@
 import { CharacterCarrier } from "./modules/interfaces";
-import { AutoBind } from "HELPER";
 import { PlugBoard } from "./modules/plugboard";
 import { RotorModule } from "./modules/rotor_module";
 import { Reflector } from "./modules/reflector";
 
-export class Machine extends AutoBind {
+export class Machine {
   readonly plugboard: PlugBoard = new PlugBoard();
   readonly rotors = new RotorModule();
   readonly reflector = new Reflector();
 
   constructor() {
-    super(["encrypt"]);
+    this.encrypt = this.encrypt.bind(this);
+    this.reset = this.reset.bind(this);
   }
 
   encrypt(char: string): string {

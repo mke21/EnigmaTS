@@ -2,7 +2,7 @@ const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
-	entry: "./src/index.ts",
+	entry: path.resolve(__dirname, "/src/index.ts"),
 	output: {
 		path: path.resolve(__dirname, "dist"),
 		filename: "enigma.js",
@@ -27,8 +27,8 @@ module.exports = {
 	resolve: {
 		extensions: [".tsx", ".ts", ".js"],
 		alias: {
-			HELPER: path.resolve(__dirname, "src/helper.js"),
-			MECHANICS: path.resolve(__dirname, "src/mechanics")
+			helper: path.resolve(__dirname, "src/helper"),
+			mechanics: path.resolve(__dirname, "src/mechanics"),
 		},
 	},
 	plugins: [

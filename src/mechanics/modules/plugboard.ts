@@ -1,7 +1,7 @@
 // represents the plugboard
 
 import { CharacterCarrier, validate } from "./interfaces";
-import { AutoBind } from "HELPER";
+
 
 export class Wire {
   readonly side1: string;
@@ -21,11 +21,13 @@ export class Wire {
   }
 }
 
-export class PlugBoard extends AutoBind {
+export class PlugBoard {
   connections = new Map<string, string>();
 
   constructor() {
-    super(["pass_though", "add", "delete"]);
+    this.add = this.add.bind(this);
+    this.delete = this.delete.bind(this);
+    this.passThrough = this.passThrough.bind(this);
   }
 
   add(wire: Wire): void {

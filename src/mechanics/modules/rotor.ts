@@ -1,6 +1,5 @@
 // represents a rotor
 import { CharacterCarrier } from "./interfaces";
-import { AutoBind } from "HELPER";
 
 interface RotorConfiguration {
   sequence: string;
@@ -18,7 +17,7 @@ const RotorTypes = {
   V: { sequence: "VZBRGITYUPSDNHLXAWMJQOFECK", turnover: "Z" },
 };
 
-export class Rotor extends AutoBind {
+export class Rotor {
   rotorNumber: RotorNumber;
   _rotor: RotorConfiguration;
   _start: number;
@@ -26,7 +25,10 @@ export class Rotor extends AutoBind {
   current: number;
 
   constructor() {
-    super(["forward", "reverse", "rotate"]);
+    this.forward = this.forward.bind(this);
+    this.reverse = this.reverse.bind(this);
+    this.rotate = this.rotate.bind(this);
+    this.reset = this.reset.bind(this);
   }
 
   get rotor(): RotorNumber {

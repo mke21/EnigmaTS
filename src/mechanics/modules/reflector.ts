@@ -1,13 +1,12 @@
 // represents a reflector type B
 import { CharacterCarrier } from "./interfaces";
-import { AutoBind } from "HELPER";
 
-export class Reflector extends AutoBind {
+export class Reflector {
 	readonly base: string = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 	readonly sequence: string = "YRUHQSLDPXNGOKMIEBFZCWVJAT";
 
 	constructor() {
-		super(["passThrough"]);
+    this.passThrough = this.passThrough.bind(this);
 	}
 
 	passThrough(char: CharacterCarrier): CharacterCarrier {
