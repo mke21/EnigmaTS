@@ -2,24 +2,26 @@
  * Baseclass that provides the events create functions
  * events is an array of strings
  */
-const Event = require("EVENTS/event").default;
-const Controller = require("EVENTS/controller").default;
+import { Event } from "./event";
+import { Controller } from "./controller";
+
 
 export default class {
-	constructor(events=[]) {
+  _controllers: Controller[] = [];
+  _events: { [key: string]: Event } = {}; 
+
+	constructor(events: string[]=[]) {
 		this._setEvents(events);
 		this.addEventListener = this.addEventListener.bind(this);
 	}
 
-	_setEvents(events) {
-		this._controllers = [];
-		this._events = {};
+	_setEvents(events: string[]) {
 		events.forEach(e => {
 			this._events[e] = new Event(this);
 		});
 	}
 
-	addEventListener(e, listener) {
+	addEventListener(e: string, listener: Function) {
 		this._controllers.push(new Controller(this._events[e], listener));
 	}
 }

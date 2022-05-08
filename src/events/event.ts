@@ -1,6 +1,6 @@
 // event class in order to other functions listening in.
 //
-export default class Event {
+export class Event {
   listeners: Function[] = [];
   sender: Object 
 
@@ -12,10 +12,10 @@ export default class Event {
 		this.listeners.push(listener);
 	}
 
-	public notify(args: any[]) {
+	public notify(args: any) {
 		for (let i = 0; i < this.listeners.length; i += 1) {
 			try {
-				this.listeners[i](this.listeners, args);
+				this.listeners[i](args);
 			} catch (error) {
 				console.error(error);
 			}

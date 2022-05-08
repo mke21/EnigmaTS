@@ -1,25 +1,23 @@
-export default class Controller {
-  eventObj: Object;
+import { Event } from "./event";
 
-    constructor(eventObj, listener) {
-        this.eventObj = eventObj;
-        this.listener = listener;
+export class Controller {
+  eventObj: Event;
+  listener: Function;
 
-        this.setupHandlers()
-            .enable();
-        return this;
-    }
-    setupHandlers() {
-        this.reactionHandler = this.reaction.bind(this);
-        return this;
-    }
-    enable() {
-        this.eventObj.attach(this.reactionHandler);
-        return this;
-    }
+  constructor(eventObj: Event, listener: Function) {
+    this.eventObj = eventObj;
+    this.listener = listener;
+    this.reaction = this.reaction.bind(this);
+    this.enable();
+    return this;
+  }
 
-    reaction(send, args) {
-        this.listener(args);
-    }
+  enable() {
+    this.eventObj.attach(this.reaction);
+    return this;
+  }
+
+  reaction(send, args) {
+    this.listener(args);
+  }
 }
-
