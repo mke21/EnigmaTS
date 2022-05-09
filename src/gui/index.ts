@@ -1,4 +1,4 @@
-import {Board} from "./lightboard/board";
+import { Board } from "./lightboard/board";
 import { Machine } from "mechanics/machine";
 import { KeyInput } from "./input/input";
 
@@ -9,7 +9,9 @@ export class App {
 
   constructor() {
     document.body.appendChild(this.board.div);
-    this.input.addEventListener("KeyPress", this.board.on);
+    this.input.addEventListener("KeyPress", (key: any) => {
+      this.board.on(this.machine.encrypt(String(key)));
+    });
     this.input.addEventListener("KeyRelease", this.board.off);
   }
 }
