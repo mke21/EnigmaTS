@@ -1,0 +1,10 @@
+.lightboard {
+  display: grid;
+  grid-template-rows: max-content max-content max-content;
+}
+
+.lightboard .row {
+  display: flex;
+  flex-direction: row;
+  margin: auto;
+}

@@ -1,4 +1,12 @@
-import { Machine } from "mechanics/machine";
+//import { Machine } from "mechanics/machine";
 import { EventsBase } from "ev/EventsBaseClass";
+import { App } from "gui/index";
 
-export { Machine, EventsBase };
+let app = new App();
+
+export { 
+//  Machine, 
+  EventsBase, 
+  app 
+};
+
