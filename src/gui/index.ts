@@ -19,11 +19,15 @@ export class App {
     append(document.body, [this.board.div, this.reset, this.output.div, this.keyboard.div])
 
     this.input.addEventListener("KeyPress", (key: any) => {
+      this.keyboard.realKeyPress(String(key));
       let encr = this.machine.encrypt(String(key));
       this.output.add(String(key), encr);
       this.board.on(encr);
     });
-    this.input.addEventListener("KeyRelease", this.board.off);
+    this.input.addEventListener("KeyRelease", ()=>{
+      this.keyboard.realKeyRelease();
+      this.board.off
+    });
     this.reset.onclick = () =>{
       this.machine.reset();
       this.output.reset();

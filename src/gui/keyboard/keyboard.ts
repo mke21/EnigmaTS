@@ -9,6 +9,7 @@ const LETTERS = [
 
 export class KeyBoard {
   public div: HTMLElement = create("div", ["keyboard"]);
+  private keys= new Map<string, HTMLElement>();
 
   constructor() {
     let Rows = [
@@ -19,10 +20,24 @@ export class KeyBoard {
     for (let i = 0; i < Rows.length; i++) {
       LETTERS[i].forEach((l) => {
         let button: HTMLButtonElement = document.createElement("button");
+        button.id = l;
         button.innerText = l;
+        this.keys.set(l, button);
         Rows[i].appendChild(button);
       });
     }
     append(this.div, Rows);
+
+    this.realKeyPress = this.realKeyPress.bind(this);
+    this.realKeyRelease = this.realKeyRelease.bind(this);
   }
+
+  realKeyPress(key: string) {
+    this.keys.get(key).classList.add("active");
+  }
+
+  realKeyRelease() {
+    this.keys.forEach(k =>k.classList.remove("active"));
+  }
+
 }
