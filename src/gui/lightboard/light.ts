@@ -3,12 +3,11 @@ import "./light.css";
 import { create, append } from "helper/html"; 
 
 export class Light {
-  public div: HTMLElement;
-  private light: HTMLElement;
+
+  public div: HTMLElement = create("div", ["LightWrapper"]);
+  private light: HTMLElement = create("div", ["Light"]);
 
   constructor(char: string) {
-    this.div = create("div", ["LightWrapper"]);
-    this.light = create("div", ["Light"]);
     let currChar = char.toUpperCase();
     this.light.appendChild(document.createTextNode(currChar));
     append(this.div, [this.light]);

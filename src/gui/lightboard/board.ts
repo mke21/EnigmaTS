@@ -9,19 +9,18 @@ const LETTERS = [
 ];
 
 export class Board {
-  public div: HTMLElement;
+  public div: HTMLElement = create("div", ["lightboard"]);
   private lights = new Map<string, Light>();
 
   constructor() {
     let that = this;
-    this.div = create("div", ["lightboard"]);
     let Rows = [
       create("div", ["row"]),
       create("div", ["row"]),
       create("div", ["row"]),
     ];
-    for (let i=0; i < Rows.length; i++) {
-      LETTERS[i].forEach(l => {
+    for (let i = 0; i < Rows.length; i++) {
+      LETTERS[i].forEach((l) => {
         let n = new Light(l);
         that.lights.set(l, n);
         Rows[i].appendChild(n.div);

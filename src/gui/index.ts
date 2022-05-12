@@ -3,6 +3,7 @@ import { Board } from "./lightboard/board";
 import { Machine } from "mechanics/machine";
 import { KeyInput } from "./input/input";
 import { Output } from "./output/output";
+import {KeyBoard} from "./keyboard/keyboard";
 
 export class App {
   public board: Board = new Board();
@@ -10,11 +11,12 @@ export class App {
   private input: KeyInput = new KeyInput();
   private reset: HTMLButtonElement = document.createElement("button");
   private output: Output = new Output();
+  private keyboard: KeyBoard = new KeyBoard();
 
   constructor() {
     this.reset.classList.add("resetbutton");  
     this.reset.textContent = "Reset";
-    append(document.body, [this.board.div, this.reset, this.output.div])
+    append(document.body, [this.board.div, this.reset, this.output.div, this.keyboard.div])
 
     this.input.addEventListener("KeyPress", (key: any) => {
       let encr = this.machine.encrypt(String(key));
