@@ -19,6 +19,24 @@ export class RotorModule {
     this.reset = this.reset.bind(this);
   }
 
+  get RotorNames(): string[] {
+    let result: string[] = [];
+    this.rotors.forEach((r) => result.push(r.rotorNumber));
+    return result;
+  }
+
+  get RotorSettings(): number[] {
+    let result: number[] = [];
+    this.rotors.forEach((r) => result.push(r.start));
+    return result;
+  }
+
+  get RotorCurrent(): number[] {
+    let result: number[] = [];
+    this.rotors.forEach((r) => result.push(r.current));
+    return result;
+  }
+
   forward(char: CharacterCarrier): CharacterCarrier {
     let result = new CharacterCarrier(char.value, char.rotate);
     for (let i = 0; i < this.rotors.length; i++) {
@@ -27,7 +45,7 @@ export class RotorModule {
     return result;
   }
 
-  reverse(char: CharacterCarrier) {
+  reverse(char: CharacterCarrier): CharacterCarrier {
     let result = new CharacterCarrier(char.value, char.rotate);
     for (let i = this.rotors.length - 1; i >= 0; i--) {
       result = this.rotors[i].reverse(result);
@@ -41,5 +59,9 @@ export class RotorModule {
 
   setRotor(index: number, rotor_number: RotorNumber): void {
     this.rotors[index].rotor = rotor_number;
+  }
+
+  setRotorStart(index: number, rotor_start: number): void {
+    this.rotors[index].start = rotor_start;
   }
 }
