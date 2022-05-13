@@ -1,3 +1,9 @@
+/* keyboard.ts
+ * registers both a click on the virual keyboard and keypresses on the
+ * physical keyboard.
+ * 2 events, keypress and keyrelease
+ */
+
 import "./keyboard.css";
 import { EventsBase } from "ev/EventsBaseClass";
 import { create, append } from "helper/html";
@@ -11,7 +17,7 @@ const LETTERS = [
 
 export class KeyBoard extends EventsBase {
   public div: HTMLElement = create("div", ["keyboard"]);
-  private keys= new Map<string, HTMLElement>();
+  private keys = new Map<string, HTMLElement>();
   private input: KeyInput = new KeyInput();
 
   constructor() {
@@ -40,14 +46,14 @@ export class KeyBoard extends EventsBase {
     this.realKeysEvents();
   }
 
-  realKeysEvents(this: KeyBoard){
+  realKeysEvents(this: KeyBoard) {
     let that = this;
     this.input.addEventListener("KeyPress", (key: any) => {
       that.realKeyPress(String(key));
       that._events.KeyPress.notify(String(key));
     });
 
-    this.input.addEventListener("KeyRelease", ()=>{
+    this.input.addEventListener("KeyRelease", () => {
       that.realKeyRelease();
       that._events.KeyRelease.notify("");
     });
@@ -58,7 +64,6 @@ export class KeyBoard extends EventsBase {
   }
 
   realKeyRelease() {
-    this.keys.forEach(k =>k.classList.remove("active"));
+    this.keys.forEach((k) => k.classList.remove("active"));
   }
-
 }
