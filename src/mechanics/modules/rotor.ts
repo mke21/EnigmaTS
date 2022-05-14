@@ -1,4 +1,7 @@
 // represents a rotor
+
+// is de turnover letter de input letter of de output letter?
+//
 import { CharacterCarrier } from "./interfaces";
 
 interface RotorConfiguration {
@@ -50,11 +53,12 @@ export class Rotor {
   }
 
   forward(char: CharacterCarrier): CharacterCarrier {
+    let rotate: boolean = false;
     if (char.rotate) {
       this.rotate();
+      rotate = this.outstring[0] === this._rotor.turnover;
     }
     let index: number = this.base.indexOf(char.value);
-    let rotate: boolean = this.outstring[0] === this._rotor.turnover;
     let result: CharacterCarrier = new CharacterCarrier(
       this.outstring[index],
       rotate

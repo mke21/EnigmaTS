@@ -20,11 +20,11 @@ export class App {
     this.reset.classList.add("resetbutton");
     this.reset.textContent = "Reset";
     append(document.body, [
-      this.board.div,
       this.reset,
-      this.output.div,
-      this.keyboard.div,
       this.rotors.div,
+      this.board.div,
+      this.keyboard.div,
+      this.output.div,
     ]);
 
     this.keyboard.addEventListener("KeyPress", (key: string) => {
