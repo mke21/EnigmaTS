@@ -12,5 +12,10 @@
   border: 1px solid black;
   background-color: white;
   color: black;
+  font-family: Courier;
+  font-size: 22px;
+  vertical-align: middle;
+  line-height: 2em;
+
 }
 
