@@ -2,7 +2,7 @@
 	"name": "enigmats",
 	"version": "1.0.0",
 	"description": "",
-	"main": "dist/enigma.js",
+	"main": "./dist/enigma.js",
 	"scripts": {
 		"build": "webpack --mode production",
 		"start": "npx webpack serve --mode development",
@@ -17,6 +17,7 @@
 	"license": "ISC",
 	"devDependencies": {
 		"css-loader": "^6.7.1",
+		"style-loader": "^3.3.1",
 		"ts-loader": "^9.3.0",
 		"typescript": "^4.6.4",
 		"webpack": "^5.72.0",
@@ -25,6 +26,7 @@
 	},
 	"dependencies": {
 		"@fontsource/open-sans": "^4.5.8",
-		"html-webpack-plugin": "^5.5.0"
+		"html-webpack-plugin": "^5.5.0",
+		"i": "^0.3.7"
 	}
 }
