@@ -6,6 +6,7 @@ import { Machine } from "mechanics/machine";
 import { Output } from "./output/output";
 import { KeyBoard } from "./keyboard/keyboard";
 import { Rotors, RotorValue } from "./rotors/rotors";
+import { WireBoard } from "./wireboard/wireboard";
 
 export class App {
   public readonly board: Board = new Board();
@@ -14,7 +15,7 @@ export class App {
   private readonly output: Output = new Output();
   private readonly keyboard: KeyBoard = new KeyBoard();
   private rotors: Rotors = new Rotors(this.machine.rotors.RotorSettings);
-;
+  private readonly WireBoard = new WireBoard();
 
   constructor() {
     this.reset.classList.add("resetbutton");
@@ -24,6 +25,7 @@ export class App {
       this.rotors.div,
       this.board.div,
       this.keyboard.div,
+      this.WireBoard.div,
       this.output.div,
     ]);
 

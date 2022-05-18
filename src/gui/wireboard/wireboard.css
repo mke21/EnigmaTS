@@ -1,0 +1,76 @@
+.wireboard {
+  background-color: saddlebrown;
+  display: grid;
+  grid-template-rows: max-content max-content max-content;
+  padding: 5px;
+}
+
+.wireboard .row {
+  display: flex;
+  flex-direction: row;
+  margin: auto;
+  grid-gap: 0.5rem;
+}
+
+.socket {
+  display: grid;
+  border-radius: 50%; /*make circular */
+  grid-template-rows: 1fr 1fr;
+  background-color: #333;
+}
+
+.socket .label {
+  color: white;
+  font-family: Open Sans;
+  font-size: 1.5em;
+  text-align: center;
+}
+
+.socket .bus {
+  border-radius: 50%; /*make circular */
+  width: 2em;
+  height: 2em;
+  margin: 0.5em;
+  border: 2px solid #777;
+  background-color: black;
+}
+
+.socket .bus.red {
+  background-color: red;
+}
+.socket .bus.blue {
+  background-color: blue;
+}
+.socket .bus.purple {
+  background-color: purple;
+}
+.socket .bus.orange {
+  background-color: orange;
+}
+.socket .bus.yellow {
+  background-color: yellow;
+}
+.socket .bus.green {
+  background-color: green;
+}
+.socket .bus.blueviolet {
+  background-color: blueviolet;
+}
+.socket .bus.brown {
+  background-color: orangered;
+}
+.socket .bus.darkgolden {
+  background-color: darkgoldenrod;
+}
+.socket .bus.chartreuse {
+  background-color: chartreuse;
+}
+.socket .bus.grey {
+  background-color: grey;
+}
+.socket .bus.salmon {
+  background-color: darksalmon;
+}
+.socket .bus.olivegreen {
+  background-color: olive;
+}
