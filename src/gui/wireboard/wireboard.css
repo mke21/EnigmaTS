@@ -14,7 +14,11 @@
 
 .socket {
   display: grid;
-  border-radius: 50%; /*make circular */
+  box-shadow: inset 3px 3px 3px #999;
+  border-bottom-left-radius: 100% 2em;
+  border-bottom-right-radius: 100% 2em;
+  border-top-left-radius: 100% 2em;
+  border-top-right-radius: 100% 2em;
   grid-template-rows: 1fr 1fr;
   background-color: #333;
 }
@@ -24,12 +28,13 @@
   font-family: Open Sans;
   font-size: 1.5em;
   text-align: center;
+  margin: auto;
 }
 
 .socket .bus {
   border-radius: 50%; /*make circular */
-  width: 2em;
-  height: 2em;
+  width: 1.5rem;
+  height: 1.5rem;
   margin: 0.5em;
   border: 2px solid #777;
   background-color: black;
