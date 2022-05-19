@@ -17,7 +17,7 @@ export class PlugBoard {
     let s1 = wire.side1.toUpperCase();
     let s2 = wire.side2.toUpperCase();
     // validate
-    if (!validate(s1) || !validate(s2)) {
+    if (validate(s1) || validate(s2)) {
       throw "plugs not correct, should be a single letter";
     }
     if (s1 === s2) {

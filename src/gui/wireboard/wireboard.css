@@ -21,6 +21,7 @@
   border-top-right-radius: 100% 2em;
   grid-template-rows: 1fr 1fr;
   background-color: #333;
+  cursor: pointer;
 }
 
 .socket .label {
@@ -29,6 +30,7 @@
   font-size: 1.5em;
   text-align: center;
   margin: auto;
+  cursor: pointer;
 }
 
 .socket .bus {
@@ -38,6 +40,7 @@
   margin: 0.5em;
   border: 2px solid #777;
   background-color: black;
+  cursor: pointer;
 }
 
 .socket .bus.red {
@@ -76,6 +79,6 @@
 .socket .bus.salmon {
   background-color: darksalmon;
 }
-.socket .bus.olivegreen {
+.socket .bus.olive {
   background-color: olive;
 }

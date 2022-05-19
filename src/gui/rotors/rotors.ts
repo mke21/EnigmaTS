@@ -15,6 +15,7 @@ export class Rotors extends EventsBase {
     super(["changeRotorSetting"]);
     for (let i = 0; i < settings.length; i++) {
       let rotor = document.createElement("input");
+      rotor.onkeydown = () =>  false;
       rotor.type = "number";
       rotor.min = "1";
       rotor.max = "26";

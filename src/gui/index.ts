@@ -15,7 +15,7 @@ export class App {
   private readonly output: Output = new Output();
   private readonly keyboard: KeyBoard = new KeyBoard();
   private rotors: Rotors = new Rotors(this.machine.rotors.RotorSettings);
-  private readonly WireBoard = new WireBoard();
+  private readonly wireboard = new WireBoard();
 
   constructor() {
     this.reset.classList.add("resetbutton");
@@ -25,7 +25,7 @@ export class App {
       this.rotors.div,
       this.board.div,
       this.keyboard.div,
-      this.WireBoard.div,
+      this.wireboard.div,
       this.output.div,
     ]);
 
@@ -39,6 +39,9 @@ export class App {
     this.keyboard.addEventListener("KeyRelease", () => {
       this.board.off();
     });
+
+    this.wireboard.addEventListener("connected", this.machine.plugboard.add);
+    this.wireboard.addEventListener("disconnected", this.machine.plugboard.delete);
 
     this.rotors.addEventListener("changeRotorSetting", (v: RotorValue) => {
       this.machine.rotors.setRotorStart(v.nr, v.value);
