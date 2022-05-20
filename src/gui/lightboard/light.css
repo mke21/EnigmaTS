@@ -5,7 +5,7 @@ div.LightWrapper {
 }
 
 div.LightWrapper div.Light {
-  border: 1px solid #aaa;
+  border: 2px solid #aaa;
   border-radius: 50%; /*make circular */
   background-color: black;
   margin: auto;

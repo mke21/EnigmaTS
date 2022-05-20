@@ -3,6 +3,7 @@
   grid-gap: 0.5rem;
   grid-template-rows: max-content max-content max-content;
   padding: 2em;
+  border-top: 1px solid #333;
 }
 
 .keyboard .row {
