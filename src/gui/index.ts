@@ -1,6 +1,7 @@
 // GUI/input.ts
 //
-import { append } from "helper/html";
+import "./index.css";
+import { append, create } from "helper/html";
 import { Board } from "./lightboard/board";
 import { Machine } from "mechanics/machine";
 import { Output } from "./output/output";
@@ -20,13 +21,14 @@ export class App {
   constructor() {
     this.reset.classList.add("resetbutton");
     this.reset.textContent = "Reset";
+    let rotordiv = create("div", ["rotorpanel"]);
     append(document.body, [
-      this.reset,
-      this.rotors.div,
+      append(rotordiv, [this.reset, this.rotors.div]),
       this.board.div,
       this.keyboard.div,
       this.wireboard.div,
-      this.output.div,
+      this.output.input,
+      this.output.output
     ]);
 
     this.keyboard.addEventListener("KeyPress", (key: string) => {
@@ -41,16 +43,18 @@ export class App {
     });
 
     this.wireboard.addEventListener("connected", this.machine.plugboard.add);
-    this.wireboard.addEventListener("disconnected", this.machine.plugboard.delete);
+    this.wireboard.addEventListener(
+      "disconnected",
+      this.machine.plugboard.delete
+    );
 
     this.rotors.addEventListener("changeRotorSetting", (v: RotorValue) => {
       this.machine.rotors.setRotorStart(v.nr, v.value);
-    })
+    });
     this.reset.onclick = () => {
       this.machine.reset();
       this.rotors.values = this.machine.rotors.RotorCurrent;
       this.output.reset();
     };
-
   }
 }
