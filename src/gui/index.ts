@@ -9,15 +9,22 @@ import { KeyBoard } from "./keyboard/keyboard";
 import { Rotors, RotorValue } from "./rotors/rotors";
 import { WireBoard } from "./wireboard/wireboard";
 import { Settings } from "./settings/settings";
+import { RotorNumber } from "mechanics/modules/rotor";
+
+interface rotorSetting { index: number, rotor_number: RotorNumber};
 
 export class App {
-  public readonly board: Board = new Board();
   public readonly machine: Machine = new Machine();
+  private readonly board: Board = new Board();
   private readonly reset: HTMLElement = create("button", ["reset"]);
   private readonly output: Output = new Output();
   private readonly keyboard: KeyBoard = new KeyBoard();
   private rotors: Rotors = new Rotors(this.machine.rotors.RotorSettings);
   private readonly wireboard = new WireBoard();
+  private readonly settings = new Settings(
+    this.machine.rotorOptions,
+    this.machine.rotors.RotorNames
+  );
 
   constructor() {
     this.reset.classList.add("resetbutton");
@@ -39,7 +46,7 @@ export class App {
     append(right, [righth2, this.output.output]);
 
     append(document.body, [
-      append(headerdiv, [h1]),
+      append(headerdiv, [h1, this.settings.button]),
       append(bodydiv, [
         left,
         right,
@@ -47,6 +54,7 @@ export class App {
         this.board.div,
         this.keyboard.div,
         this.wireboard.div,
+        this.settings.div,
       ]),
     ]);
 
@@ -75,5 +83,7 @@ export class App {
       this.rotors.values = this.machine.rotors.RotorCurrent;
       this.output.reset();
     };
+    this.settings.addEventListener("setRotor", (v: rotorSetting) =>
+      this.machine.rotors.setRotor(v.index, v.rotor_number));
   }
 }

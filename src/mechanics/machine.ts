@@ -1,5 +1,6 @@
 import { CharacterCarrier } from "./modules/interfaces";
 import { PlugBoard } from "./modules/plugboard";
+import { RotorTypes } from "./modules/rotor";
 import { RotorModule } from "./modules/rotor_module";
 import { Reflector } from "./modules/reflector";
 
@@ -27,4 +28,7 @@ export class Machine {
     this.rotors.reset();
   }
 
+  get rotorOptions(): string[] {
+    return Object.keys(RotorTypes).filter(t => t !== "test");
+  }
 }

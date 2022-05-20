@@ -1,0 +1,12 @@
+.dialog {
+  padding: 1em;
+  max-width: 50ch;
+}
+
+.dialog::backdrop {
+  background: rgb(0 0 0 / 0.3);
+}
+
+.button-open {
+  height: 100%;
+}

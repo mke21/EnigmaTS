@@ -11,7 +11,7 @@ interface RotorConfiguration {
 
 export type RotorNumber = "I" | "II" | "III" | "IV" | "V" | "test";
 
-const RotorTypes = {
+export const RotorTypes = {
   test: { sequence: "ABCDEFGHIJKLMNOPQRSTUVWXYZ", turnover: "C" },
   I: { sequence: "EKMFLGDQVZNTOWYHXUSPAIBRCJ", turnover: "Q" },
   II: { sequence: "AJDKSIRUXBLHWTMCQGZNPYFVOE", turnover: "E" },
