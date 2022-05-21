@@ -59,7 +59,5 @@ lerna-debug.log*
 .eslintcache
 package-lock.json
 *.swp
-dist/main.js.map
 ca.crt
 certs/*.crt
-dist/*
