@@ -7,4 +7,6 @@ For me personally, this is a learning project. Where I have been mainly a user o
 languages (specifically Python), I'm trying to learn typescript to learn the advantages of strongly
 typed principles.
 
+You can see the full app [here](https://mke21.github.io/EnigmaTS/dist/).
+
 Will add more later.
