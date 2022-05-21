@@ -62,3 +62,4 @@ package-lock.json
 dist/main.js.map
 ca.crt
 certs/*.crt
+dist/*
